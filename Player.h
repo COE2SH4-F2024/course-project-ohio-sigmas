@@ -13,13 +13,13 @@ class Player
 
     // You will include more data members and member functions to complete your design.
 
-    
     public:
         enum Dir {UP, DOWN, LEFT, RIGHT, STOP};  // This is the direction state
 
         Player(GameMechs* thisGMRef);
+        Player(const Player & rhs);
         ~Player();
-
+        Player & operator=(const Player & rhs);
         objPos getPlayerPos() const; // Upgrade this in iteration 3.       
         void updatePlayerDir();
         void movePlayer();

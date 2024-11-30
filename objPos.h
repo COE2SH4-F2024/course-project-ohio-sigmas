@@ -11,11 +11,13 @@ typedef struct
 class objPos
 {
     public:
-        Pos* pos;        
-        char symbol;
+        Pos* pos = 0;
+        char symbol = 0;
 
         objPos();
         objPos(int xPos, int yPos, char sym);
+        objPos(const objPos & x);
+        objPos & operator=(const objPos & rhs);
         
         // Respect the rule of six / minimum four
         // [TODO] Implement the missing special member functions to meet the minimum four rule

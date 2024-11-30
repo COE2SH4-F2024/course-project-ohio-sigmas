@@ -25,8 +25,9 @@ class GameMechs
     public:
         GameMechs();
         GameMechs(int boardX, int boardY);
+        GameMechs(const GameMechs & rhs);
         ~GameMechs(); // is this one needed at all? Why or why not?
-        
+        GameMechs & operator=(const GameMechs & rhs);
         bool getExitFlagStatus() const; 
         void setExitTrue();
         bool getLoseFlagStatus() const;
