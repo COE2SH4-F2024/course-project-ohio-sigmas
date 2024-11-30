@@ -4,6 +4,8 @@
 #include "GameMechs.h"
 #include "objPos.h"
 #include "objPosArrayList.h"
+#include "MacUILib.h"
+
 
 class Player
 {
@@ -20,16 +22,18 @@ class Player
         Player(const Player & rhs);
         ~Player();
         Player & operator=(const Player & rhs);
-        objPos getPlayerPos() const; // Upgrade this in iteration 3.       
+        objPosArrayList * getPlayerPos() const; // Upgrade this in iteration 3.
         void updatePlayerDir();
         void movePlayer();
+        void updScreen();
+        void drawScreen();
 
         // More methods to be added here
 
     private:
-        objPos playerPos; // Upgrade this in iteration 3.       
+        objPosArrayList * playerPos; // Upgrade this in iteration 3.
         enum Dir myDir;
-
+        char ** board;
         // Need a reference to the Main Game Mechanisms
         GameMechs* mainGameMechsRef;
 };

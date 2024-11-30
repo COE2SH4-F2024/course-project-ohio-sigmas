@@ -30,7 +30,7 @@ int objPosArrayList::getSize() const {
 
 void objPosArrayList::insertHead(objPos r) {
     if (arrayCapacity == listSize) {
-        assert(false);
+        _A();
     }
     for (int i = listSize; i > 0; --i) {
         aList[i] = aList[i - 1];

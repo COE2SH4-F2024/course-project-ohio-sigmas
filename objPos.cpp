@@ -31,6 +31,11 @@ objPos & objPos::operator=(const objPos & rhs) {
     pos->x = rhs.pos->x;
     pos->y = rhs.pos->y;
     symbol = rhs.symbol;
+    return *this;
+}
+
+objPos::~objPos() {
+    delete pos;
 }
 
 void objPos::setObjPos(objPos o)
@@ -53,7 +58,7 @@ objPos objPos::getObjPos() const
     returnPos.pos->x = pos->x;
     returnPos.pos->y = pos->y;
     returnPos.symbol = symbol;
-    
+
     return returnPos;
 }
 

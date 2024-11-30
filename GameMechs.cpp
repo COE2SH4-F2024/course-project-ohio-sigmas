@@ -1,21 +1,29 @@
 #include "GameMechs.h"
+#include "stdlib.h"
 
 GameMechs::GameMechs()
 {
     boardSizeX = 30;
     boardSizeY = 15;
+    input = 0;
+    exitFlag = 0;
+    loseFlag = 0;
+    score = 0;
 }
 
 GameMechs::GameMechs(int boardX, int boardY)
 {
     boardSizeX = boardX;
     boardSizeY = boardY;
+    input = 0;
+    exitFlag = 0;
+    loseFlag = 0;
+    score = 0;
 }
 
 // do you need a destructor? no
 GameMechs::~GameMechs()
 {
-    //retur
 }
 
 GameMechs::GameMechs(const GameMechs & rhs) {
@@ -36,6 +44,7 @@ GameMechs & GameMechs::operator=(const GameMechs & rhs) {
     loseFlag = rhs.loseFlag;
     score = rhs.score;
     food = rhs.food;
+    return *this;
 }
 
 bool GameMechs::getExitFlagStatus() const
@@ -47,7 +56,6 @@ bool GameMechs::getLoseFlagStatus() const
 {
     return loseFlag;
 }
-    
 
 char GameMechs::getInput() const
 {
@@ -74,7 +82,6 @@ int GameMechs::getBoardSizeY() const
     return boardSizeY;
 }
 
-
 void GameMechs::setExitTrue()
 {
     exitFlag = 1;
@@ -88,6 +95,13 @@ void GameMechs::setLoseFlag()
 void GameMechs::setInput(char this_input)
 {
     input = this_input;
+    chk_esc();
+}
+
+void GameMechs::chk_esc() {
+    if (input == 27) {
+        setExitTrue();
+    }
 }
 
 void GameMechs::clearInput()
@@ -95,4 +109,23 @@ void GameMechs::clearInput()
     input = 0;
 }
 
-// More methods should be added here
+void GameMechs::generateFood(const objPosArrayList * arr) {
+    int f = 0, y, x;
+    while (!f) {
+        f = 1;
+        y = rand() % (boardSizeY - 2) + 1, x = rand() % (boardSizeX - 2) + 1;
+        for (int i = 0; i < arr->getSize(); ++i) {
+            objPos t = arr->getElement(i);
+            int ty = t.pos->y, tx = t.pos->x;
+            if (ty == y && tx == x) {
+                f = 0;
+                break;
+            }
+        }
+    }
+    food = objPos(x, y, '$');
+}
+
+objPos GameMechs::getFoodPos() const {
+    return objPos(food);
+}

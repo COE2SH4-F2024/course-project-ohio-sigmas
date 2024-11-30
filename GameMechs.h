@@ -21,14 +21,14 @@ class GameMechs
         int boardSizeY;
 
         objPos food;
-
+        void chk_esc();
     public:
         GameMechs();
         GameMechs(int boardX, int boardY);
         GameMechs(const GameMechs & rhs);
         ~GameMechs(); // is this one needed at all? Why or why not?
         GameMechs & operator=(const GameMechs & rhs);
-        bool getExitFlagStatus() const; 
+        bool getExitFlagStatus() const;
         void setExitTrue();
         bool getLoseFlagStatus() const;
         void setLoseFlag();
@@ -39,11 +39,13 @@ class GameMechs
 
         int getBoardSizeX() const;
         int getBoardSizeY() const;
-        
+
         int getScore() const;
         void incrementScore();
-        
+
         // More methods should be added here
+        void generateFood(const objPosArrayList * arr);
+        objPos getFoodPos() const;
 };
 
 #endif
