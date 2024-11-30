@@ -11,7 +11,7 @@ class objPosArrayList
         objPos* aList;
         int listSize;
         int arrayCapacity;
-
+        void _A();
     public:
         objPosArrayList();
         ~objPosArrayList();
@@ -19,6 +19,7 @@ class objPosArrayList
         int getSize() const;
         void insertHead(objPos thisPos);
         void insertTail(objPos thisPos);
+        void push_back(const objPos & t);
         void removeHead();
         void removeTail();
         

@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 // WARNING!!  This test suite does not contain any test cases for accessing elements out-of-bound.
 //
 // You must deploy exception throwing for all out-of-bound accesses.
