@@ -25,7 +25,11 @@ Player::Player(GameMechs* thisGMRef)
 Player::~Player()
 {
     delete playerPos;
-
+    int by = mainGameMechsRef->getBoardSizeY(), bx = mainGameMechsRef->getBoardSizeX();
+    for (int i = 0; i < by; ++i) {
+        delete[] board[i];
+    }
+    delete[] board;
     // delete any heap members here
 }
 
@@ -98,7 +102,7 @@ void Player::movePlayer()
     } else if (has_f) {
         mainGameMechsRef->incrementScore();
         mainGameMechsRef->generateFood(playerPos);
-    }else {
+    } else {
         playerPos->removeTail();
     }
 
