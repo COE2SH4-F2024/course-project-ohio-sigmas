@@ -4,6 +4,7 @@
 #define ARRAY_MAX_CAP 200
 
 #include "objPos.h"
+#include "cassert"
 
 class objPosArrayList
 {
@@ -15,6 +16,9 @@ class objPosArrayList
     public:
         objPosArrayList();
         ~objPosArrayList();
+        // big no no
+        objPosArrayList(const objPosArrayList & rhs) {assert(false);}
+        objPosArrayList * operator=(const objPosArrayList & rhs) {assert(false);}
 
         int getSize() const;
         void insertHead(objPos thisPos);

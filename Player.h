@@ -20,6 +20,8 @@ class Player
 
         Player(GameMechs* thisGMRef);
         ~Player();
+        Player(const Player & rhs) {assert(false);} // should only have one player
+        Player * operator=(const Player & rhs) {assert(false);} // big big no no
         objPosArrayList * getPlayerPos() const; // Upgrade this in iteration 3.
         void updatePlayerDir();
         void movePlayer();

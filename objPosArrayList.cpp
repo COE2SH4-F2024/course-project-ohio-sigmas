@@ -1,5 +1,6 @@
 #include "objPosArrayList.h"
 #include "cassert"
+#include "stdlib.h"
 // Paste your Tested implementation here.
 // Paste your Tested implementation here.
 // Paste your Tested implementation here.
@@ -59,10 +60,12 @@ void objPosArrayList::removeHead() {
         aList[i] = aList[i + 1];
     }
     --listSize;
+    listSize += (listSize < 0);
 }
 
 void objPosArrayList::removeTail() {
     --listSize;
+    listSize += (listSize < 0);
 }
 
 objPos objPosArrayList::getHeadElement() const {
@@ -74,5 +77,10 @@ objPos objPosArrayList::getTailElement() const {
 }
 
 objPos objPosArrayList::getElement(int ind) const {
-    return aList[ind];
+    if (ind >= 0 && ind < listSize) {
+        return aList[ind];
+    } else {
+        // if out of bounds return random element
+        return aList[rand() % listSize];
+    }
 }
