@@ -24,6 +24,9 @@ objPos::objPos(const objPos & rhs) {
 }
 
 objPos & objPos::operator=(const objPos & rhs) {
+    if (this == &rhs) {
+        return *this;
+    }
     if (pos) {
         delete pos;
     }
