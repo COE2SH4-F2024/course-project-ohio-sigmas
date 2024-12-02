@@ -18,7 +18,7 @@ class objPosArrayList
         ~objPosArrayList();
         // big no no
         objPosArrayList(const objPosArrayList & rhs) {assert(false);}
-        objPosArrayList * operator=(const objPosArrayList & rhs) {assert(false);}
+        objPosArrayList & operator=(const objPosArrayList & rhs) {assert(false); return *this;}
 
         int getSize() const;
         void insertHead(objPos thisPos);
