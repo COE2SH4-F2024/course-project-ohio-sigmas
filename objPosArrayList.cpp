@@ -80,7 +80,7 @@ objPos objPosArrayList::getElement(int ind) const {
     if (ind >= 0 && ind < listSize) {
         return aList[ind];
     } else {
-        // if out of bounds return random element
+        // if out of bounds return random element :) ) ) ) )
         return aList[rand() % listSize];
     }
 }
