@@ -80,12 +80,12 @@ void Player::movePlayer()
             x = m - 2;
         }
     }
-    objPos nxt(x, y, 219), fp = mainGameMechsRef->getFoodPos();
+    objPos nxt(x, y, 219), fp = mainGameMechsRef->getFoodPos(); // next position and food position
     int has_f = 0;
     if (nxt.pos->y == fp.pos->y && nxt.pos->x == fp.pos->x) {
         has_f = 1;
     }
-    int s_f = 0;
+    int s_f = 0; // self collission flag
     if (myDir != STOP) {
         for (int i = 0; i < playerPos->getSize(); ++i) {
             objPos t = playerPos->getElement(i);

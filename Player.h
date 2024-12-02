@@ -35,7 +35,7 @@ class Player
         enum Dir myDir;
         char ** board;
         // Need a reference to the Main Game Mechanisms
-        GameMechs* mainGameMechsRef;
+        GameMechs * mainGameMechsRef;
 };
 
 #endif
