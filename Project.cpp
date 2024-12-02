@@ -73,7 +73,7 @@ void CleanUp(void)
 {
     MacUILib_clearScreen();
     if (_g->getLoseFlagStatus()) {
-        MacUILib_printf("sucks for u haha\nfinallllll score is = %d", _g->getScore());
+        MacUILib_printf("you LOST ?!?! sucks for u haha\nfinallllll score is = %d", _g->getScore());
     }
     delete _g;
     delete p;
