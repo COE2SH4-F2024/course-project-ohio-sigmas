@@ -96,16 +96,15 @@ void Player::movePlayer()
         }
     }
     playerPos->insertHead(objPos(x, y, 219));
-    if (s_f) {
+    if (s_f) { // if self ccolliding
         mainGameMechsRef->setLoseFlag();
         mainGameMechsRef->setExitTrue();
-    } else if (has_f) {
+    } else if (has_f) { // if found food
         mainGameMechsRef->incrementScore();
         mainGameMechsRef->generateFood(playerPos);
-    } else {
+    } else { //
         playerPos->removeTail();
     }
-
 }
 
 void Player::updScreen() {

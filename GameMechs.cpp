@@ -110,7 +110,7 @@ void GameMechs::clearInput()
 }
 
 void GameMechs::generateFood(const objPosArrayList * arr) {
-    int f = 0, y, x;
+    int f = 0, y, x; // f is flag, while good location has not been found yet
     while (!f) {
         f = 1;
         y = rand() % (boardSizeY - 2) + 1, x = rand() % (boardSizeX - 2) + 1;
