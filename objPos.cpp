@@ -1,6 +1,6 @@
 #include "objPos.h"
 
-objPos::objPos()
+objPos::objPos() // default constructor
 {
     pos = new Pos;
     pos->x = 0;
@@ -8,7 +8,7 @@ objPos::objPos()
     symbol = 0; //NULL
 }
 
-objPos::objPos(int xPos, int yPos, char sym)
+objPos::objPos(int xPos, int yPos, char sym)  // extra inputs constructor
 {
     pos = new Pos;
     pos->x = xPos;
@@ -16,14 +16,16 @@ objPos::objPos(int xPos, int yPos, char sym)
     symbol = sym;
 }
 
-objPos::objPos(const objPos & rhs) {
+objPos::objPos(const objPos & rhs)  // copy constructor
+{
     pos = new Pos;
     pos->x = rhs.pos->x;
     pos->y = rhs.pos->y;
     symbol = rhs.symbol;
 }
 
-objPos & objPos::operator=(const objPos & rhs) {
+objPos & objPos::operator=(const objPos & rhs) // copy assignment operator
+{
     if (this == &rhs) {
         return *this;
     }
@@ -37,7 +39,8 @@ objPos & objPos::operator=(const objPos & rhs) {
     return *this;
 }
 
-objPos::~objPos() {
+objPos::~objPos() // destructor
+{
     delete pos;
 }
 

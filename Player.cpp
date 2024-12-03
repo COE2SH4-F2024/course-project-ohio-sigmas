@@ -6,7 +6,7 @@ Player::Player(GameMechs* thisGMRef)
     mainGameMechsRef = thisGMRef;
     myDir = STOP;
     playerPos = new objPosArrayList;
-    playerPos->insertTail(objPos(1, 1, 219));
+    playerPos->insertTail(objPos(15, 7, 219)); // char(219) is special all white char
     mainGameMechsRef->generateFood(playerPos);
     int by = mainGameMechsRef->getBoardSizeY(), bx = mainGameMechsRef->getBoardSizeX();
     board = new char * [by];
@@ -14,11 +14,16 @@ Player::Player(GameMechs* thisGMRef)
         board[i] = new char[bx];
     }
     int _t = (by > bx) ? by : bx;
-    for (int i = 0; i < _t; ++i) {
-        board[i % by][0] = '#';
-        board[i % by][bx - 1] = '#';
-        board[0][i % bx] = '#';
-        board[by - 1][i % bx] = '#';
+
+    for (int i = 0; i < by; ++i)
+    {
+        board[i][0] = '#';
+        board[i][bx - 1] = '#';
+    }
+    for (int j = 0; j < bx; ++j)
+    {
+        board[0][j] = '#';
+        board[by - 1][j] = '#';
     }
 }
 
@@ -96,18 +101,19 @@ void Player::movePlayer()
         }
     }
     playerPos->insertHead(objPos(x, y, 219));
-    if (s_f) { // if self ccolliding
+    if (s_f) {
         mainGameMechsRef->setLoseFlag();
         mainGameMechsRef->setExitTrue();
-    } else if (has_f) { // if found food
+    } else if (has_f) {
         mainGameMechsRef->incrementScore();
         mainGameMechsRef->generateFood(playerPos);
-    } else { //
+    } else {
         playerPos->removeTail();
     }
 }
 
-void Player::updScreen() {
+void Player::updScreen() // update movement
+{
     int n = mainGameMechsRef->getBoardSizeY(), m = mainGameMechsRef->getBoardSizeX();
     for (int i = 1; i < n - 1; ++i) {
         for (int j = 1; j < m - 1; ++j) {
@@ -123,7 +129,9 @@ void Player::updScreen() {
     board[y][x] = mainGameMechsRef->getFoodPos().symbol;
 }
 
-void Player::drawScreen() {
+void Player::drawScreen() // drawing the scren
+{
+    MacUILib_printf("Ohio Sigma's Snake Game\n");
     updScreen();
     int n = mainGameMechsRef->getBoardSizeY(), m = mainGameMechsRef->getBoardSizeX();
     for (int i = 0; i < n; ++i) {
@@ -132,5 +140,7 @@ void Player::drawScreen() {
         }
         MacUILib_printf("\n");
     }
-    MacUILib_printf("ur skor is : !! %d !!\n", mainGameMechsRef->getScore());
+    MacUILib_printf("Use the wasd keys to control the snake.\n");
+    MacUILib_printf("Eat the food '$' to increase your score!\n");
+    MacUILib_printf("Your Score: %d\n", mainGameMechsRef->getScore());
 }
