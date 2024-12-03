@@ -1,7 +1,7 @@
 #ifndef OBJPOS_ARRAYLIST_H
 #define OBJPOS_ARRAYLIST_H
 
-#define ARRAY_MAX_CAP 200
+#define ARRAY_MAX_CAP 200 // our gameboard is 30x15 so we are not using this
 
 #include "objPos.h"
 #include "cassert"

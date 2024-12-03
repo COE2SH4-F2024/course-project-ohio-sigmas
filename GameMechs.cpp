@@ -6,8 +6,8 @@ GameMechs::GameMechs()
     boardSizeX = 30;
     boardSizeY = 15;
     input = 0;
-    exitFlag = 0;
-    loseFlag = 0;
+    exitFlag = false;
+    loseFlag = false;
     score = 0;
 }
 
@@ -16,8 +16,8 @@ GameMechs::GameMechs(int boardX, int boardY)
     boardSizeX = boardX;
     boardSizeY = boardY;
     input = 0;
-    exitFlag = 0;
-    loseFlag = 0;
+    exitFlag = false;
+    loseFlag = false;
     score = 0;
 }
 
@@ -26,7 +26,8 @@ GameMechs::~GameMechs()
 {
 }
 
-GameMechs::GameMechs(const GameMechs & rhs) {
+GameMechs::GameMechs(const GameMechs & rhs) // copy
+{
     boardSizeX = rhs.boardSizeX;
     boardSizeY = rhs.boardSizeY;
     input = rhs.input;
@@ -36,7 +37,8 @@ GameMechs::GameMechs(const GameMechs & rhs) {
     food = rhs.food;
 }
 
-GameMechs & GameMechs::operator=(const GameMechs & rhs) {
+GameMechs & GameMechs::operator=(const GameMechs & rhs) // copy assignment
+{
     boardSizeX = rhs.boardSizeX;
     boardSizeY = rhs.boardSizeY;
     input = rhs.input;
@@ -84,12 +86,12 @@ int GameMechs::getBoardSizeY() const
 
 void GameMechs::setExitTrue()
 {
-    exitFlag = 1;
+    exitFlag = true;
 }
 
 void GameMechs::setLoseFlag()
 {
-    loseFlag = 1;
+    loseFlag = true;
 }
 
 void GameMechs::setInput(char this_input)
