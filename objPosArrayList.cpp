@@ -69,11 +69,13 @@ void objPosArrayList::removeTail() {
 }
 
 objPos objPosArrayList::getHeadElement() const {
-    return aList[0];
+    if (listSize > 0) return aList[0];
+    else assert(false);
 }
 
 objPos objPosArrayList::getTailElement() const {
-    return aList[listSize - 1];
+    if (listSize > 0) return aList[listSize - 1];
+    else assert(false);
 }
 
 objPos objPosArrayList::getElement(int ind) const {
@@ -81,6 +83,7 @@ objPos objPosArrayList::getElement(int ind) const {
         return aList[ind];
     } else {
         // if out of bounds return random element :) ) ) ) )
-        return aList[rand() % listSize];
+        assert(false);
+        // return aList[rand() % listSize];
     }
 }
